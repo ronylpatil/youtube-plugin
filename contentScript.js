@@ -17,9 +17,10 @@ function highlightComments() {
   comments.forEach((comment) => {
     const textElement = comment.querySelector("#content-text");
     const commentText = textElement.textContent;
-    const commentLength = commentText.length;
+    // const commentLength = commentText.length;
+    const commentLength = commentText.trim().split(/\s+/).length;
 
-    if (commentLength > 200) {
+    if (commentLength > 50) {
       textElement.classList.add("long-comment");
     } else {
       textElement.classList.add("short-comment");
