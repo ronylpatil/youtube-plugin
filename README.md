@@ -1,5 +1,5 @@
 ### YouTube Plugin
-Chrome Extension to highlight youtube comment based on comment length [Beta Version]. 
+Chrome Extension to highlight YouTube comments based on comment length [Beta Version]. 
 
 ### Snapshot
 <p align = "center">
