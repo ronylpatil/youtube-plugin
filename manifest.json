@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Comment Length Highlighter",
+  "version": "1.0",
+  "description": "Highlights YouTube comments based on length",
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["contentScript.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": ["activeTab"]
+}
