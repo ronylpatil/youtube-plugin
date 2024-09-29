@@ -13,9 +13,10 @@ function highlightComments() {
   if (processing) return;
   processing = true;
 
+  const countOfComments = document.querySelectorAll("ytd-comment-thread-renderer.style-scope.ytd-item-section-renderer").length;
+
   // Selector element
   const comments = document.querySelectorAll("ytd-comment-view-model");
-  //   const comments = document.querySelectorAll("style-scope.ytd-item-section-renderer");
   let totalLikes = 0;
   let totalReplies = 0;
 
@@ -91,8 +92,7 @@ function highlightComments() {
   });
 
   // Update total likes and replies
-  updateStats(totalLikes, totalReplies);
-
+  updateStats(totalLikes, totalReplies, countOfComments);
   processing = false;
 }
 
@@ -124,21 +124,34 @@ function addStyles() {
       position: relative;
       top: 3px;
     }
+
     #comment-stats {
       position: fixed;
-      bottom: 50px;
-      right: 10px;
-      background-color: rgba(0, 0, 0, 0.7);
-      /*background-color: black;  darker background */
-      border: 2px solid #98ff00;
-      padding: 10px;
+      text-align: left;
+      bottom: 25px;
+      right: 5px;
+      background-color: black; /* darker background */
+      border: 2px outset #98ff00; 
+      padding: 12px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      font-size: 14px; /* increased font size */
+      font-family: consolas;
+      font-size: 12px; /* increased font size */
       font-weight: 500; /* thicker font */
-      color: #98ff00; /* purple font color */
-      opacity: 0.9; /* 90% transparent overall */
+      color: #00ff41; /* purple font color */
+      opacity: 0.8; /* 90% transparent overall */
       animation: movingBorder 2s infinite;
+    }
+
+    #comment-stats::before {
+      content: "COMMENTS STATS";
+      text-align: left;
+      display: block;
+      font-size: 16px;
+      font-family: consolas;
+      font-weight: 500;
+      color: 	#ffe202; /* title color */
+      margin-bottom: 3px;
     }
 
     @keyframes movingBorder {
@@ -171,7 +184,7 @@ function addStyles() {
   document.head.appendChild(style);
 }
 
-function updateStats(totalLikes, totalReplies) {
+function updateStats(totalLikes, totalReplies, countOfComments) {
   const statsElement = document.getElementById("comment-stats");
   if (!statsElement) {
     const element = document.createElement("div");
@@ -182,10 +195,18 @@ function updateStats(totalLikes, totalReplies) {
   // Handle NaN values
   totalLikes = isNaN(totalLikes) ? 0 : totalLikes;
   totalReplies = isNaN(totalReplies) ? 0 : totalReplies;
+  countOfComments = isNaN(countOfComments) ? 0 : countOfComments;
+  
+  totalComments = countOfComments + totalReplies
+  avgLikes = totalLikes / countOfComments
+  avgReplies = totalReplies / countOfComments
 
   document.getElementById("comment-stats").innerHTML = `
-      Total Likes - ${totalLikes.toLocaleString()} <br>
-      Total Replies - ${totalReplies.toLocaleString()}
+      TOTAL LIKES - ${totalLikes.toLocaleString()} <br>
+      TOTAL REPLIES - ${totalReplies.toLocaleString()} <br>
+      TOTAL COMMENTS - ${(totalComments).toLocaleString()} <br>
+      AVG LIKES - ${avgLikes.toFixed(2).toLocaleString()} <br>
+      AVG REPLIES - ${avgReplies.toFixed(2).toLocaleString()}
     `;
 }
 
