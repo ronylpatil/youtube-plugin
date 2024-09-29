@@ -114,7 +114,7 @@ function addStyles() {
     }
     .short-comment::after {
       content: "";
-      background: green;
+      background: #98ff00;
       border-radius: 50%;
       width: 11px;
       height: 11px;
@@ -128,12 +128,44 @@ function addStyles() {
       position: fixed;
       bottom: 50px;
       right: 10px;
-      background-color: #fff;
-      border: 1px solid #ddd;
+      background-color: rgba(0, 0, 0, 0.7);
+      /*background-color: black;  darker background */
+      border: 2px solid #98ff00;
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      font-size: 14px;
+      font-size: 14px; /* increased font size */
+      font-weight: 500; /* thicker font */
+      color: #98ff00; /* purple font color */
+      opacity: 0.9; /* 90% transparent overall */
+      animation: movingBorder 2s infinite;
+    }
+
+    @keyframes movingBorder {
+      0% {
+        border-color: #ff0000;
+        box-shadow: 0 0 5px #ff0000;
+      }
+      20% {
+        border-color: #0000ff;
+        box-shadow: 0 0 5px #0000ff;
+      }
+      40% {
+        border-color: #00ff00;
+        box-shadow: 0 0 5px #00ff00;
+      }
+      60% {
+        border-color: #ffff00;
+        box-shadow: 0 0 5px #ffff00;
+      }
+      80% {
+        border-color: #ff00f1;
+        box-shadow: 0 0 5px #ff00f1;
+      }
+      100% {
+        border-color: #8ddfff;
+        box-shadow: 0 0 5px #8ddfff;
+      }
     }
   `;
   document.head.appendChild(style);
@@ -152,8 +184,8 @@ function updateStats(totalLikes, totalReplies) {
   totalReplies = isNaN(totalReplies) ? 0 : totalReplies;
 
   document.getElementById("comment-stats").innerHTML = `
-      Total Likes: ${totalLikes.toLocaleString()} <br>
-      Total Replies: ${totalReplies.toLocaleString()}
+      Total Likes - ${totalLikes.toLocaleString()} <br>
+      Total Replies - ${totalReplies.toLocaleString()}
     `;
 }
 
