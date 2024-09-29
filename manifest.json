@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "youtube comment analyser",
-  "version": "2.0",
-  "description": "Highlights YouTube comments based on # word",
+  "version": "3.0",
+  "description": "Highlights YouTube comments based on # word with basic stats",
   "author" : "ronylpatil",
   "icons": {
     "16": "icons/icon16.png",
