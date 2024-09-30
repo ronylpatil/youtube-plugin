@@ -198,8 +198,8 @@ function updateStats(totalLikes, totalReplies, countOfComments) {
   countOfComments = isNaN(countOfComments) ? 0 : countOfComments;
   
   totalComments = countOfComments + totalReplies
-  avgLikes = totalLikes / countOfComments
-  avgReplies = totalReplies / countOfComments
+  avgLikes = isNaN(totalLikes / countOfComments) ? 0 : avgLikes
+  avgReplies = isNaN(totalReplies / countOfComments) ? 0 : avgReplies
 
   document.getElementById("comment-stats").innerHTML = `
       TOTAL LIKES - ${totalLikes.toLocaleString()} <br>
