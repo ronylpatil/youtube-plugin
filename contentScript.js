@@ -198,16 +198,16 @@ function updateStats(totalLikes, totalReplies, countOfComments) {
   countOfComments = isNaN(countOfComments) ? 0 : countOfComments;
   
   totalComments = countOfComments + totalReplies
-  avgLikes = isNaN(totalLikes / countOfComments) ? 0 : avgLikes
-  avgReplies = isNaN(totalReplies / countOfComments) ? 0 : avgReplies
+  avgLikes = totalLikes / countOfComments
+  avgReplies = totalReplies / countOfComments
 
   document.getElementById("comment-stats").innerHTML = `
       TOTAL LIKES - ${totalLikes.toLocaleString()} <br>
       TOTAL REPLIES - ${totalReplies.toLocaleString()} <br>
       TOTAL COMMENTS - ${(totalComments).toLocaleString()} <br>
-      AVG LIKES - ${avgLikes.toFixed(2).toLocaleString()} <br>
-      AVG REPLIES - ${avgReplies.toFixed(2).toLocaleString()}
-    `;
+      AVG LIKES - ${(isNaN(avgLikes) ? 0 : avgLikes).toFixed(2).toLocaleString()} <br>
+      AVG REPLIES - ${(isNaN(avgReplies) ? 0 : avgReplies).toFixed(2).toLocaleString()}
+    `;  
 }
 
 addStyles();
