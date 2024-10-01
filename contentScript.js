@@ -110,7 +110,7 @@ function addStyles() {
       margin-left: 5px;
       float: right;
       position: relative;
-      top: 3px;
+      top: 1px;
     }
     .short-comment::after {
       content: "";
@@ -127,31 +127,36 @@ function addStyles() {
 
     #comment-stats {
       position: fixed;
-      text-align: left;
-      bottom: 25px;
+      text-align: center;
+      bottom: 20px;
       right: 5px;
       background-color: black; /* darker background */
-      border: 2px outset #98ff00; 
-      padding: 12px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border: 2px outset; 
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      border-radius: 0px;
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
       font-family: consolas;
-      font-size: 12px; /* increased font size */
+      font-size: 13px; /* increased font size */
       font-weight: 500; /* thicker font */
-      color: #00ff41; /* purple font color */
-      opacity: 0.8; /* 90% transparent overall */
+      color: #FFFFFF; /* purple font color */
+      opacity: 0.9; /* 90% transparent overall */
       animation: movingBorder 2s infinite;
     }
 
     #comment-stats::before {
       content: "COMMENTS STATS";
-      text-align: left;
+      text-align: center;
       display: block;
       font-size: 16px;
       font-family: consolas;
-      font-weight: 500;
-      color: 	#ffe202; /* title color */
+      font-weight: 800;
+      color: #bfff00; /* title color */
+      margin-top: 0px;
       margin-bottom: 3px;
+      letter-spacing: 1px;
     }
 
     @keyframes movingBorder {
