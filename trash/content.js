@@ -37,13 +37,20 @@ function highlightComments() {
           "data": commentText
       })
       };
-      let req = await fetch("http://127.0.0.1:8000/", requestParem);
-      const responcePayload = await req.json();
+      let req = await fetch("http://127.0.0.1:8000/predict", requestParem);
+      // responcePayload = await req.json();  // OR
+      let { prediction } = await req.json();
+      console.log("Prediction:", prediction)
+      
+      // Add class for styling
+      if (prediction == 1) {
+        textElement.classList.add("long-comment");
+      } else {
+        textElement.classList.add("short-comment");
+      }
     }
-    apiRun().catch((err) => console.log(err));
 
-    // Calculate word count
-    const commentLength = commentText.trim().split(/\s+/).length;
+    apiRun().catch((err) => console.log(err));
 
     // calculate total likes
     const voteCountElement = comment.querySelector("#vote-count-middle");
@@ -63,13 +70,6 @@ function highlightComments() {
       if (!isNaN(voteCountNumber)) {
         totalLikes += voteCountNumber;
       }
-    }
-
-    // Add class for styling
-    if (commentLength > 50) {
-      textElement.classList.add("long-comment");
-    } else {
-      textElement.classList.add("short-comment");
     }
   });
 
