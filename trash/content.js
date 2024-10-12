@@ -44,9 +44,11 @@ function highlightComments() {
       
       // Add class for styling
       if (prediction == 1) {
-        textElement.classList.add("long-comment");
-      } else {
         textElement.classList.add("short-comment");
+      } else if (prediction == 2) {
+        textElement.classList.add("medium-comment");
+      } else {
+        textElement.classList.add("long-comment");
       }
     }
 
@@ -129,6 +131,18 @@ function addStyles() {
       position: relative;
       top: 1px;
     }
+    .medium-comment::after {
+      content: "";
+      background: blue;
+      border-radius: 50%;
+      width: 11px;
+      height: 11px;
+      display: inline-block;
+      margin-left: 5px;
+      float: right;
+      position: relative;
+      top: 1px;
+    }  
     .short-comment::after {
       content: "";
       background: #98ff00;
